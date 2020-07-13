@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+import UserInput from "./Components/User-Input"
+import UserOutput from "./Components/User-Output"
+import UserSubmit from "./Components/User-Submit"
+import { render } from '@testing-library/react';
+
+
+class App extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            user: ''
+        }
+    }
+
+    changeUser = (event) => {
+        this.setState({
+            user: event.target.value
+        }) 
+    }
+
+    render() {
+    return (
+        <div>
+            <UserInput user={this.state.user} changeUser={this.changeUser}/>
+            <UserOutput user={this.state.user}/>
+            <UserSubmit checkInput={this.checkInput}/>
+
+        </div>
+    )
+}
 }
 
-export default App;
+
+export default App
