@@ -21,6 +21,14 @@ class App extends Component {
             user: event.target.value
         }) 
     }
+    
+    checkInput = (event) => {
+        if (this.state.user.length=== 0) {
+            alert('input kosong')
+        } else {
+            alert(this.state.user)
+        }
+    }
 
     render() {
     return (
